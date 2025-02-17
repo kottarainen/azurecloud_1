@@ -16,7 +16,7 @@ resource "azurerm_virtual_network" "vnet" {
   name                = "labwork1-vnet"
   location            = azurerm_resource_group.iaas_group.location
   resource_group_name = azurerm_resource_group.iaas_group.name
-  address_space       = ["10.0.0.0/24"]
+  address_space       = ["10.0.0.0/16"]
 }
 
 resource "azurerm_subnet" "subnet" {
@@ -91,9 +91,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "22.04-LTS"
-    version   = "latest"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts-gen2"
+    version   = "22.04.202501081"
   }
 
   admin_ssh_key {
